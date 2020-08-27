@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+ <html xmlns:layout="http://www.w3.org/1999/xhtml"
+                      layout:decorate="~{fragments/main_layout}"
+                      xmlns:th="https://www.thymeleaf.org">
+
+
+<div class="container"  layout:fragment="content">
+<h4>Register Customer</h4>
+<form action="#" th:action="@{/customer}" method="POST">
+    <div class="form-group row" >
+        <label class = "col-md-1" for="inputId">Id</label>
+        <input type="input" class="form-control col-md-3" name="id" id="inputId">
+    </div>
+
+    <div class="form-group row">
+        <label class = "col-md-1" for="inputName">Name</label>
+        <input type="input" class="form-control col-md-3" name="name" id="inputName">
+    </div>
+
+    <div class="form-group row">
+        <label class = "col-md-1" for="inputPin">Pin</label>
+        <input type="password" class="form-control col-md-3" name="pin" id="inputPin">
+    </div>
+
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary">
+    </div>
+
+</form>
+<hr>
+
+
+<h4>Customer All</h4>
+<!--<table border="1px">-->
+<!--    <tr><th>Id</th> <th>Name</th> <th>Pin</th> </tr>-->
+
+<!--    <div th:each="customer : ${allCustomers}">-->
+<!--        <tr>-->
+<!--            <td><span class="display-4 my-font2" th:text="${customer.id}">Id</span></td>-->
+<!--            <td><span class="display-4 my-font2" th:text="${customer.name}">Name</span></td>-->
+<!--            <td><span class="display-4 my-font2" th:text="${customer.pin}">Pin</span></td>-->
+<!--        </tr>-->
+<!--    </div>-->
+
+<!--</table>-->
+
+    <table class="table table-bordered ">
+        <thead class="thead-light">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Pin</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="customer : ${allCustomers}">
+            <td th:text="${customer.id}"></td>
+            <td th:text="${customer.name}"></td>
+            <td th:text="${customer.pin}"></td>
+            <td>
+                <form action="#" th:action="@{/customer}" th:method="delete">
+                    <input type="hidden" value="delete" name="_method">
+                    <input type="hidden" th:value="${customer.id}" name="id" >
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value = "Delete">
+                    </div>
+
+                </form>
+            </td>
+            <td>
+                <form action="#" th:action="@{/customer}" th:method="put">
+                    <input type="hidden" value="put" name="_method">
+                    <input type="hidden" th:value="${customer.id}" name="id" >
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-danger" value = "Update">
+                    </div>
+
+                </form>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+
+    <hr>
+<p><a th:href="@{/home}">Home Page</a></p>
+
+
+</div>>
+
+
