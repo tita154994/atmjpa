@@ -48,14 +48,24 @@ public class CustomerController {
         return "redirect:customer";
     }
 
+//    @PutMapping
+//    public String putCustomer(@ModelAttribute Customer customer, Model model){
+//        //customerService.deleteCustomer(customer.getId());
+//        //customerService.updateCustomer(customer);
+//        //model.addAttribute("allCustomers", customerService.getCustomers());
+//        //return "redirect:customer";
+//    }
+
     @PutMapping
-    public String putCustomer(@ModelAttribute Customer customer, Model model){
-        //customerService.deleteCustomer(customer.getId());
-        //customerService.updateCustomer(customer);
+    public String updateCustomer(@ModelAttribute Customer customer,Model model) {
+        Customer record = customerService.findCustomer(customer.getId());
+        //record.setName(customer.getName());
+        record.setName("TiTaEdit");
+        customerService.updateCustomer(record);
         model.addAttribute("allCustomers", customerService.getCustomers());
         return "redirect:customer";
-    }
 
+    }
 
 
 

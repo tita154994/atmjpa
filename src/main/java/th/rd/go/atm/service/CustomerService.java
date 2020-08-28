@@ -59,9 +59,10 @@ public class CustomerService {
          repository.deleteById(id);
     }
 
-//    public void updateCustomer(Customer customer) {
-//        repository.update(customer.getId(),customer);
-//    }
+    public void updateCustomer(Customer customer) {
+        //repository.update(customer.getId(),customer);
+        repository.save(customer);
+    }
 
 //    public List<Customer> getCustomers() {
 //        return new ArrayList<>(customers);
