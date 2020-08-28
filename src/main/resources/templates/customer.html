@@ -31,6 +31,15 @@
 
 
 <h4>Customer All</h4>
+<!--    <form action="#" th:action="@{/customer/search}" method="POST">-->
+<!--        <div class="form-group row" >-->
+<!--            <label class = "col-md-1" for="inputId">Id</label>-->
+<!--            <input type="input" class="form-control col-md-3" name="id" id="inputIdx">-->
+<!--            <input type="submit" class="btn btn-primary" value = "Search">-->
+<!--        </div>-->
+
+<!--    </form>-->
+
 <!--<table border="1px">-->
 <!--    <tr><th>Id</th> <th>Name</th> <th>Pin</th> </tr>-->
 
@@ -45,8 +54,7 @@
 <!--</table>-->
 
     <table class="table table-bordered ">
-        <thead class="thead-light">
-        <tr>
+        <thead class="thead-light">0
             <th>Id</th>
             <th>Name</th>
             <th>Pin</th>
@@ -74,7 +82,7 @@
                     <input type="hidden" value="put" name="_method">
                     <input type="hidden" th:value="${customer.id}" name="id" >
                     <div class="form-group">
-                        <input type="submit" class="btn btn-danger" value = "Update">
+                        <input type="submit" class="btn btn-primary" value = "Update">
                     </div>
 
                 </form>

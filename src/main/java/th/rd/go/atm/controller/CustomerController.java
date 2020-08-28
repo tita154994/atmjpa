@@ -28,11 +28,20 @@ public class CustomerController {
 //        customers.add(new Customer(2,"Nancy",2345));
 //        customers.add(new Customer(3,"Rick",3456));
         //model.addAttribute("allCustomers", customers);
-
         model.addAttribute("allCustomers", customerService.getCustomers());
-
         return "customer";
     }
+
+    @PostMapping("/search")
+    public String searchCustomerPage(@ModelAttribute Customer customer, Model model) {
+        //System.out.println("Customer Id >>>" + customer.getId());
+        Customer record = customerService.findCustomer(customer.getId());
+        //System.out.println("Find Customer >>>"+ record);
+        model.addAttribute("allCustomers", record);
+        //model.addAttribute("allCustomers", customerService.getCustomers());
+        return "redirect:/customer";
+    }
+
     @PostMapping
     public String registerCustomer(@ModelAttribute Customer customer, Model model) {
         //customers.add(customer);
@@ -47,14 +56,6 @@ public class CustomerController {
         model.addAttribute("allCustomers", customerService.getCustomers());
         return "redirect:customer";
     }
-
-//    @PutMapping
-//    public String putCustomer(@ModelAttribute Customer customer, Model model){
-//        //customerService.deleteCustomer(customer.getId());
-//        //customerService.updateCustomer(customer);
-//        //model.addAttribute("allCustomers", customerService.getCustomers());
-//        //return "redirect:customer";
-//    }
 
     @PutMapping
     public String updateCustomer(@ModelAttribute Customer customer,Model model) {
